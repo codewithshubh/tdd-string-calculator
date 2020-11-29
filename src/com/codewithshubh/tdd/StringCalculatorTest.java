@@ -12,8 +12,13 @@ class StringCalculatorTest {
 	    }
 
 		@Test
-		public void testEmptyString() {
+		public void testEmpty() {
 			assertEquals(0, StringCalculator.add(""));
+		}
+		
+		@Test
+		public void testOneNum() {
+			assertEquals(2, StringCalculator.add("2"));
 		}
 
 }
