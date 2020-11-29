@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 
+
 class StringCalculatorTest {
 
 	public static void main(String args[]) {
@@ -19,18 +20,18 @@ class StringCalculatorTest {
 		
 		@Test
 		public void testOneNum() {
-			assertEquals(2, StringCalculator.add("2"));
+			assertEquals(7, StringCalculator.add("7"));
 		}
 		
 		@Test
 		public void testTwoNum(){
-			assertEquals(3, StringCalculator.add("1,2"));
+			assertEquals(15, StringCalculator.add("6,9"));
 		}
 		
 		@Test
 		public void testUnknownNum() {
 			try {
-				StringCalculator.add("1,2,3");
+				StringCalculator.add("3,4,5");
 			}
 			catch (IllegalArgumentException e){
 				assertEquals(e.getMessage(), "Unknown number count");
@@ -40,6 +41,11 @@ class StringCalculatorTest {
 		@Test
 	    public void testNewLine(){
 	    	assertEquals(6, StringCalculator.add("1\n2,3"));
+	    }
+		
+		@Test
+	    public void testDifferentDelimiter(){
+	    	assertEquals(5, StringCalculator.add("//;\n1;4"));
 	    }
 
 }
