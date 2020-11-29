@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import is.ru.stringcalculator.Calculator;
+
 class StringCalculatorTest {
 
 	public static void main(String args[]) {
@@ -24,6 +26,16 @@ class StringCalculatorTest {
 		@Test
 		public void testTwoNum(){
 			assertEquals(3, StringCalculator.add("1,2"));
+		}
+		
+		@Test
+		public void testUnknownNum() {
+			try {
+				StringCalculator.add("1,2,3");
+			}
+			catch (IllegalArgumentException e){
+				assertEquals(e.getMessage(), "Unknown number count");
+			}
 		}
 
 }

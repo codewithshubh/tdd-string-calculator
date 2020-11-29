@@ -9,6 +9,10 @@ public class StringCalculator {
 			//return Integer.parseInt(text);
 			String delimiter = ",";
 			String numList[] = split(text, delimiter + "|\n");
+			if(numList.length>2)
+			{
+				throw new IllegalArgumentException("Unknown number count");
+			}
 			return sum(numList);
 		}
 	}
@@ -18,8 +22,7 @@ public class StringCalculator {
 	}
 	
 	private static int sum(String[] numbers){
- 	    int total = 0;
-
+ 	    int total = 0; 
         for(String number : numbers){
         	total+=Integer.parseInt(number);
 		}
