@@ -1,18 +1,18 @@
 package com.codewithshubh.tdd;
 
 public class StringCalculator {
-	public static int add(String text){
-		if(text.equals("")){
+	public static int add(String string){
+		if(string.equals("")){
 			return 0;
 		}
 		else {
-			//return Integer.parseInt(text);
 			String delimiter = ",";
-			String numList[] = split(text, delimiter + "|\n");
-			if(numList.length>2)
-			{
-				throw new IllegalArgumentException("Unknown number count");
+			if(string.matches("//(.*)\n(.*)")){
+				delimiter = Character.toString(string.charAt(2));
+				string = string.substring(4);
 			}
+			
+			String numList[] = split(string, delimiter + "|\n");
 			return sum(numList);
 		}
 	}
@@ -26,7 +26,6 @@ public class StringCalculator {
         for(String number : numbers){
         	total+=Integer.parseInt(number);
 		}
-
 		return total;
     }
 }

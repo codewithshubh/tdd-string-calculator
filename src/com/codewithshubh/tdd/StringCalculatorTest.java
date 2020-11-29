@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import is.ru.stringcalculator.Calculator;
 
 class StringCalculatorTest {
 
@@ -37,5 +36,10 @@ class StringCalculatorTest {
 				assertEquals(e.getMessage(), "Unknown number count");
 			}
 		}
+		
+		@Test
+	    public void testNewLine(){
+	    	assertEquals(6, StringCalculator.add("1\n2,3"));
+	    }
 
 }
