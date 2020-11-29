@@ -20,5 +20,10 @@ class StringCalculatorTest {
 		public void testOneNum() {
 			assertEquals(2, StringCalculator.add("2"));
 		}
+		
+		@Test
+		public void testTwoNum(){
+			assertEquals(3, StringCalculator.add("1,2"));
+		}
 
 }
