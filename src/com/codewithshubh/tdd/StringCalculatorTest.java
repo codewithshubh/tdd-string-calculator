@@ -5,10 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import is.ru.stringcalculator.Calculator;
-
-
-
 
 class StringCalculatorTest {
 
@@ -38,7 +34,7 @@ class StringCalculatorTest {
 		
 		@Test
 	    public void testNewLine(){
-	    	assertEquals(6, StringCalculator.add("1\n2,3"));
+	    	assertEquals(6, StringCalculator.add("1\n2\n3"));
 	    }
 		
 		@Test
@@ -56,10 +52,20 @@ class StringCalculatorTest {
 			}
 	    	
 	    	try {
-	    		StringCalculator.add("-4,-5");
+	    		StringCalculator.add("-4,-5,2");
 			}
 			catch (IllegalArgumentException e){
 				assertEquals(e.getMessage(), "Negatives not allowed: -4,-5");
 			}
+	    }
+		
+	    @Test
+	    public final void testMoreThan1000() {
+	        assertEquals(1009, StringCalculator.add("4,1000,1001,5,1284"));
+	    }
+	    
+	    @Test
+	    public final void testSameAnyLengthDelimiter() {
+	        assertEquals(6, StringCalculator.add("//[***]\n1***2***3"));
 	    }
 }
