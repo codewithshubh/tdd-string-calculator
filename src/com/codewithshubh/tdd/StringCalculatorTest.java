@@ -38,8 +38,8 @@ class StringCalculatorTest {
 	    }
 		
 		@Test
-	    public void testDifferentDelimiter(){
-	    	assertEquals(5, StringCalculator.add("//;\n1;4"));
+	    public void testSameDelimiterSingle(){
+	    	assertEquals(5, StringCalculator.add("//[;]\n1;4"));
 	    }
 		
 		@Test
@@ -60,12 +60,24 @@ class StringCalculatorTest {
 	    }
 		
 	    @Test
-	    public final void testMoreThan1000() {
+	    public void testMoreThan1000() {
 	        assertEquals(1009, StringCalculator.add("4,1000,1001,5,1284"));
 	    }
 	    
 	    @Test
-	    public final void testSameAnyLengthDelimiter() {
+	    public void testSameAnyLengthDelimiter() {
 	        assertEquals(6, StringCalculator.add("//[***]\n1***2***3"));
+	        assertEquals(3 + 2 + 4, StringCalculator.add("//[ddd]\n3ddd2ddd4"));
 	    }
+	    
+	    @Test
+	    public void testDiffDelimiterSingle() {
+	        assertEquals(6, StringCalculator.add("//[*][%]\n1*2%3"));
+	    }
+	    
+	    @Test
+	    public void testDiffDelimiterAnyLength() {
+	        assertEquals(6, StringCalculator.add("//[**][%%]\n1**2%%3"));
+	    }
+	    
 }
