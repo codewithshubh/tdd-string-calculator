@@ -22,10 +22,23 @@ public class StringCalculator {
 	}
 	
 	private static int sum(String[] numbers){
- 	    int total = 0; 
+		int sum = 0;
+ 	    String negative_str = "";
+
         for(String number : numbers){
-        	total+=Integer.parseInt(number);
+        	if(Integer.parseInt(number) < 0){
+        		if(negative_str.equals(""))
+        			negative_str = number;
+        		else
+        			negative_str += ("," + number);
+        	}
+        	if(Integer.parseInt(number) <= 1000)
+		    	sum += Integer.parseInt(number);
 		}
-		return total;
+
+		if(!negative_str.equals("")){
+			throw new IllegalArgumentException("Negatives not allowed: " + negative_str);
+		}
+		return sum;
     }
 }

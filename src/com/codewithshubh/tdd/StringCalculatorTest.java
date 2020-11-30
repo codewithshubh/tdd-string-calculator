@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import is.ru.stringcalculator.Calculator;
+
+
 
 
 class StringCalculatorTest {
@@ -24,18 +27,13 @@ class StringCalculatorTest {
 		}
 		
 		@Test
-		public void testTwoNum(){
-			assertEquals(15, StringCalculator.add("6,9"));
+		public void testUnknownNum() {
+			assertEquals(3+6+15+18+46+33, StringCalculator.add("3,6,15,18,46,33"));
 		}
 		
 		@Test
-		public void testUnknownNum() {
-			try {
-				StringCalculator.add("3,4,5");
-			}
-			catch (IllegalArgumentException e){
-				assertEquals(e.getMessage(), "Unknown number count");
-			}
+		public void testTwoNum(){
+			assertEquals(15, StringCalculator.add("6,9"));
 		}
 		
 		@Test
@@ -47,5 +45,21 @@ class StringCalculatorTest {
 	    public void testDifferentDelimiter(){
 	    	assertEquals(5, StringCalculator.add("//;\n1;4"));
 	    }
-
+		
+		@Test
+	    public void testNegativeNum(){
+	    	try {
+				StringCalculator.add("1,-2");
+			}
+			catch (IllegalArgumentException e){
+				assertEquals(e.getMessage(), "Negatives not allowed: -2");
+			}
+	    	
+	    	try {
+	    		StringCalculator.add("-4,-5");
+			}
+			catch (IllegalArgumentException e){
+				assertEquals(e.getMessage(), "Negatives not allowed: -4,-5");
+			}
+	    }
 }
